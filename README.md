@@ -1,36 +1,70 @@
-Prerequisites:
-To build and run BadrGeesa, you will need a Linux environment. You can use native Linux, a virtual machine, or the Windows Subsystem for Linux (WSL) to set it up.
+# Developing a Multithreaded Kernel from Scratch
 
-Ensure you have the following tools installed in your Linux environment:
+Welcome to our comprehensive kernel development course, meticulously designed for learners who are interested in creating a multitasking operating system and kernel from the ground up. This course assumes no previous experience in kernel programming, ensuring a complete understanding of concepts starting from the basics. This is the code repository you will build from scratch when learning kernel development in our kernel course.
 
-QEMU: For emulating the operating system.
-GCC Cross-Compiler: To build the kernel (i.e., i686-elf-gcc for i386 architecture).
-NASM: The assembler for compiling assembly files.
-Steps to Boot PeachOS:
-Set Up Your Environment (Linux or WSL):
+[![Get the Course](https://img.shields.io/badge/Get%20the%20Course-Discount%20Link-blue?style=for-the-badge&logo=appveyor)](https://dragonzap.com/course/developing-a-multithreaded-kernel-from-scratch?coupon=GITHUBKERNELDISCOUNT)
 
-1- On Ubuntu/Debian-based distributions, you can install the required packages using:
-sudo apt update
-sudo apt install qemu nasm build-essential
+## About this Course
 
+The course is divided into several main sections:
 
-2- Clone the Repository:
+- **Real Mode Development**
+- **Protected Mode Development**
+- **Assembly Language Bonus**
 
-3-Build the Kernel: Run the following command to compile the kernel and other components:
-./build.sh
+Each section offers a unique perspective on kernel development and is designed to build your skills incrementally.
 
+### Real Mode Development
 
-4-qemu-system-i386 -kernel build/kernel.bin
+This is your introduction to kernel development, here we cover:
 
+- The boot process and how memory works
+- Writing a boot loader in assembly language
+- Working with interrupts in real mode
+- Reading a sector (512 bytes) from the hard disk
 
-5- In a separate terminal, start GDB and connect to QEMU:
-gdb
-target remote localhost:1234
+### Protected Mode Development
 
-src: Kernel, bootloader, memory management, and filesystem code.
-/programs: Contains example programs.
-/build.sh: Script to automate the build process.
+Delve deep into the creation of a 32-bit multi-tasking kernel featuring:
 
+- FAT16 filesystem implementation
+- Memory management and virtualization techniques
+- Keyboard driver implementation
+- ELF file loader creation
+- Design of a virtual filesystem layer (inspired by Linux kernel)
+- Process and task functionality
 
-Note:
-This project requires a Linux-based environment to build and run successfully. For Windows users, WSL (Windows Subsystem for Linux) or a virtual machine running Linux can be used to set up the necessary environment.
+### Assembly Language Bonus
+
+If you struggle with assembly language, this bonus section aims to bring your skills up to speed.
+
+## Instructor
+
+This course is taught by an experienced instructor who has developed Linux kernel modules professionally.
+
+## Prerequisites
+
+- Understanding of the C programming language
+- Understanding of Assembly Language
+
+## Who is this course for?
+
+This course is ideal for individuals interested in developing a kernel from scratch.
+
+## What you'll learn
+
+By the end of the course, you will acquire skills in:
+
+- Creating a kernel from scratch
+- Developing a multi-tasking kernel
+- Handling problematic programs in your operating system
+- Understanding how memory works in computers
+- Differentiating between kernel land, user land, and the protection rings
+- Learning kernel design patterns used by Linux
+- Understanding and implementing virtual memory
+- Developing processes and tasks in the kernel
+- Loading ELF files
+- Debugging disassembled machine code
+- Debugging your kernel in an emulator with GDB
+
+Ready to begin your kernel development journey? [Enroll in the course now](https://dragonzap.com/course/developing-a-multithreaded-kernel-from-scratch?coupon=GITHUBKERNELDISCOUNT) with a special discount!
