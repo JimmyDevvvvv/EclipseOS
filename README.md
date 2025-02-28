@@ -1,70 +1,91 @@
-# Developing a Multithreaded Kernel from Scratch
+# EclipseOS
 
-Welcome to our comprehensive kernel development course, meticulously designed for learners who are interested in creating a multitasking operating system and kernel from the ground up. This course assumes no previous experience in kernel programming, ensuring a complete understanding of concepts starting from the basics. This is the code repository you will build from scratch when learning kernel development in our kernel course.
+EclipseOS is a custom-built operating system designed from scratch, focusing on low-level system programming, kernel development, and OS architecture. It is a learning-driven project aiming to explore protected mode, memory management, process scheduling, and system calls, while maintaining a modular and scalable design.
 
-[![Get the Course](https://img.shields.io/badge/Get%20the%20Course-Discount%20Link-blue?style=for-the-badge&logo=appveyor)](https://dragonzap.com/course/developing-a-multithreaded-kernel-from-scratch?coupon=GITHUBKERNELDISCOUNT)
+## Table of Contents
 
-## About this Course
+- [Introduction](#introduction)
+- [Features](#features)
+- [System Architecture](#system-architecture)
+- [Boot Process](#boot-process)
+- [Installation and Compilation](#installation-and-compilation)
+- [Development Environment](#development-environment)
+- [Roadmap](#roadmap)
+- [Contributing](#contributing)
+- [License](#license)
 
-The course is divided into several main sections:
+---
 
-- **Real Mode Development**
-- **Protected Mode Development**
-- **Assembly Language Bonus**
+## Introduction
+EclipseOS is a personal operating system project created to deeply understand OS internals and system architecture. The project includes real mode and protected mode operations, a custom bootloader, and a basic kernel with essential functionalities. Future plans include process scheduling, file system support, and networking.
 
-Each section offers a unique perspective on kernel development and is designed to build your skills incrementally.
+## Features
+- **Custom Bootloader**: Loads the kernel and sets up protected mode.
+- **Real Mode & Protected Mode Transition**: Implements segmentation and switching between execution modes.
+- **Memory Management**: Basic memory allocation and paging (WIP).
+- **Basic Kernel Functions**: Interrupt handling, simple system calls, and screen output.
+- **Filesystem (Planned)**: Development of a minimal filesystem for storing and retrieving files.
+- **Multitasking (Planned)**: Implementing process scheduling and task switching.
+- **Networking (Planned)**: Adding basic TCP/IP stack implementation.
 
-### Real Mode Development
+## System Architecture
+The OS follows a layered architecture:
 
-This is your introduction to kernel development, here we cover:
+1. **Bootloader (Stage 1 & 2)**: Initializes the system and loads the kernel.
+2. **Kernel**: Handles memory, process scheduling, and system calls.
+3. **Drivers (Planned)**: Input/output device management (e.g., keyboard, display, disk storage).
+4. **Filesystem (Planned)**: A simple filesystem for storing data.
+5. **Networking (Planned)**: TCP/IP stack integration.
 
-- The boot process and how memory works
-- Writing a boot loader in assembly language
-- Working with interrupts in real mode
-- Reading a sector (512 bytes) from the hard disk
+## Boot Process
+1. **BIOS Execution**: The BIOS loads the bootloader from the boot sector.
+2. **Bootloader (Stage 1)**: Sets up the environment, loads the Stage 2 loader.
+3. **Bootloader (Stage 2)**: Enables protected mode, loads the kernel.
+4. **Kernel Execution**: Initializes memory, interrupts, and system calls.
 
-### Protected Mode Development
+## Installation and Compilation
+### Prerequisites
+- **GCC Cross Compiler**: Required for compiling low-level code.
+- **NASM**: Used for assembling the bootloader and other assembly code.
+- **QEMU/Bochs**: Virtualization software for testing the OS.
 
-Delve deep into the creation of a 32-bit multi-tasking kernel featuring:
+### Compiling EclipseOS
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/your-username/EclipseOS.git
+   cd EclipseOS
+   ```
+2. Build the bootloader and kernel:
+   ```sh
+   make
+   ```
+3. Run it in QEMU:
+   ```sh
+   make run
+   ```
 
-- FAT16 filesystem implementation
-- Memory management and virtualization techniques
-- Keyboard driver implementation
-- ELF file loader creation
-- Design of a virtual filesystem layer (inspired by Linux kernel)
-- Process and task functionality
+## Development Environment
+EclipseOS is primarily developed in:
+- **Assembly (x86 NASM)**: For bootloader and low-level operations.
+- **C**: Kernel and core system functionalities.
+- **QEMU**: Testing and debugging.
 
-### Assembly Language Bonus
+## Roadmap
+- [x] Implement Bootloader (Stage 1 & 2)
+- [x] Enable Protected Mode
+- [x] Implement Memory Segmentation
+- [ ] Add Paging and Memory Management
+- [ ] Implement Basic File System
+- [ ] Implement Process Scheduling (Multitasking)
+- [ ] Add Network Stack Support
 
-If you struggle with assembly language, this bonus section aims to bring your skills up to speed.
+## Contributing
+This is a personal project, but contributions and suggestions are welcome! Feel free to open an issue or submit a pull request.
 
-## Instructor
+## License
+EclipseOS is licensed under the MIT License. See the `LICENSE` file for details.
 
-This course is taught by an experienced instructor who has developed Linux kernel modules professionally.
+---
 
-## Prerequisites
 
-- Understanding of the C programming language
-- Understanding of Assembly Language
 
-## Who is this course for?
-
-This course is ideal for individuals interested in developing a kernel from scratch.
-
-## What you'll learn
-
-By the end of the course, you will acquire skills in:
-
-- Creating a kernel from scratch
-- Developing a multi-tasking kernel
-- Handling problematic programs in your operating system
-- Understanding how memory works in computers
-- Differentiating between kernel land, user land, and the protection rings
-- Learning kernel design patterns used by Linux
-- Understanding and implementing virtual memory
-- Developing processes and tasks in the kernel
-- Loading ELF files
-- Debugging disassembled machine code
-- Debugging your kernel in an emulator with GDB
-
-Ready to begin your kernel development journey? [Enroll in the course now](https://dragonzap.com/course/developing-a-multithreaded-kernel-from-scratch?coupon=GITHUBKERNELDISCOUNT) with a special discount!
